@@ -31,22 +31,26 @@ function splitDeck() {
   return fullArray;
 }
 
-var deckHalves = splitDeck();
-var half1 = deckHalves[0];
-var half2 = deckHalves[1];
-var randomAmount;
-
 function riffleCards() {
-    var riffledCards = [];
-    while(half1.length > 0) {
-        randomAmount = Math.floor(Math.random() * half1.length);
-        // remove random amount of cards
-        // add removed cards to new array
-    }
-    while(half2.length > 0) {
-        randomAmount = Math.floor(Math.random() * half2.length);
-        // remove random amount of cards
-        // add removed cards to new array
-    }
-    return riffledCards;
+  var deckHalves = splitDeck();
+  var half1 = deckHalves[0];
+  var half2 = deckHalves[1];
+  var choice = Math.floor(Math.random() * 2);
+  var riffledCards = [];
+  while (half1.length || half2.length) {
+      if (choice === 0) {
+          choice = 1;
+          var tempArray1 = half1.splice(0, Math.floor(Math.random() * 26));
+          for (var i = 0; i < tempArray1.length; i++) {
+              riffledCards.push(tempArray1[i]);
+          }
+      } else {
+          choice = 0;
+          var tempArray2 = half2.splice(0, Math.floor(Math.random() * 26));
+          for (var j = 0; j < tempArray2.length; j++) {
+              riffledCards.push(tempArray2[j]);
+          }
+      }
+  }
+  return riffledCards;
 }
