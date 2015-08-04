@@ -54,3 +54,6 @@ function riffleCards() {
   }
   return riffledCards;
 }
+shuffleCards(deck);
+splitDeck();
+riffleCards();
